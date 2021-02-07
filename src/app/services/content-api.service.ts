@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {AuthenticationService} from './authentication.service';
 
@@ -12,9 +12,16 @@ export class ContentApiService {
   constructor(private http: HttpClient, private authenticationService: AuthenticationService) {
   }
 
-  public getContent(): Observable<any> {
+  public getContent(limit = 1000, page = 0): Observable<any> {
+    let params = new HttpParams();
+    params = params.append('_limit', '' + limit);
+    params = params.append('_page', '' + page);
+
     return this.http.get(
-      this.CONTENT_URL + this.authenticationService.getCurrentUserToken()
+      this.CONTENT_URL + this.authenticationService.getCurrentUserToken(),
+      {
+        params
+      }
     );
   }
 }

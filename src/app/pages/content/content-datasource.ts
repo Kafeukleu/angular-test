@@ -6,6 +6,8 @@ import {ContentApiService} from '../../services/content-api.service';
 
 export interface ContentItem {
   name: string;
+  version: number;
+  constructionId: string;
 }
 
 export class ContentDataSource extends DataSource<ContentItem> {
@@ -36,8 +38,8 @@ export class ContentDataSource extends DataSource<ContentItem> {
   }
 
 
-  public loadContent(pageIndex = 0, pageSize = 20): void {
-    this.contentApiService.getContent().subscribe(
+  public loadContent(pageSize = 20, pageIndex = 0): void {
+    this.contentApiService.getContent(pageSize, pageIndex).subscribe(
       (contentItems: ContentItem[]) => this.contentSubject.next(contentItems)
     );
   }
