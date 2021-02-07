@@ -8,6 +8,10 @@ import {ContentComponent} from './pages/content/content.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LoginModule} from './pages/login/login.module';
 import {AppRoutingModule} from './router/app-routing.module';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -19,10 +23,13 @@ import {AppRoutingModule} from './router/app-routing.module';
     BrowserModule,
     BrowserAnimationsModule,
     LoginModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatButtonModule
   ],
-  providers: [
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
